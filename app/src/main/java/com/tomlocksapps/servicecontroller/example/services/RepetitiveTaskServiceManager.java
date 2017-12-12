@@ -6,21 +6,25 @@ import android.os.Looper;
 import android.os.Process;
 import android.widget.Toast;
 
-import com.tomlocksapps.servicecontroller.example.services.communication.AllTimeServiceCommunication;
+import com.tomlocksapps.servicecontroller.example.services.communication.RepetitiveTaskServiceCommunication;
 import com.tomlocksapps.servicecontroller.manager.AbstractServiceManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by walczewski on 09.12.2017.
  */
 
-public class RepetitiveTaskServiceManager extends AbstractServiceManager<AllTimeServiceCommunication> {
+public class RepetitiveTaskServiceManager extends AbstractServiceManager<RepetitiveTaskServiceCommunication> {
 
     private static final long DELAY = TimeUnit.SECONDS.toMillis(10);
     private final Context context;
 
     private Handler handler = new Handler(Looper.getMainLooper());
+
+    private long timestamp = System.currentTimeMillis();
 
     public RepetitiveTaskServiceManager(Context context) {
         this.context = context;
@@ -38,13 +42,24 @@ public class RepetitiveTaskServiceManager extends AbstractServiceManager<AllTime
         repetitiveTask.run();
     }
 
+    @Override
+    public void onStartAsync(RepetitiveTaskServiceCommunication serviceCommunication) {
+        super.onStartAsync(serviceCommunication);
+
+        this.timestamp = serviceCommunication.getTimestamp();
+
+        repetitiveTask.run();
+    }
+
     private final Runnable repetitiveTask = new Runnable() {
         @Override
         public void run() {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(context, "Repetitive task fired", Toast.LENGTH_SHORT).show();
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+
+                    Toast.makeText(context, "Repetitive task fired - " + sdf.format(new Date(timestamp)), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -61,7 +76,7 @@ public class RepetitiveTaskServiceManager extends AbstractServiceManager<AllTime
 
     @Override
     protected long provideServiceCreateDelay() {
-        return TimeUnit.SECONDS.toMillis(3);
+        return TimeUnit.SECONDS.toMillis(8);
     }
 
     @Override
@@ -73,4 +88,6 @@ public class RepetitiveTaskServiceManager extends AbstractServiceManager<AllTime
     protected int provideThreadPriority() {
         return Process.THREAD_PRIORITY_LOWEST;
     }
+
+
 }

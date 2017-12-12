@@ -13,6 +13,7 @@ import com.tomlocksapps.servicecontroller.example.services.MainThreadExampleServ
 import com.tomlocksapps.servicecontroller.example.services.communication.BackgroundThreadServiceCommunication;
 import com.tomlocksapps.servicecontroller.example.services.communication.ExampleServiceCommunication;
 import com.tomlocksapps.servicecontroller.example.services.communication.MainThreadServiceCommunication;
+import com.tomlocksapps.servicecontroller.example.services.communication.RepetitiveTaskServiceCommunication;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,4 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void onRepetitiveTaskRandomizeClick(View view) {
+        serviceCommunicator.sendMessageToService(new RepetitiveTaskServiceCommunication(System.currentTimeMillis()));
+    }
 }
