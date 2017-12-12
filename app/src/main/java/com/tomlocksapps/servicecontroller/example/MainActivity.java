@@ -51,12 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onUiComputationClick(View view) {
         serviceCommunicator.startService(MainThreadExampleServiceManager.class, new MainThreadServiceCommunication(100, callback));
-//        serviceCommunicator.sendMessageToService(new MainThreadServiceCommunication(100, callback));
     }
 
     public void onBackgroundThreadComputationClick(View view) {
         serviceCommunicator.startService(BackgroundThreadExampleServiceManager.class, new BackgroundThreadServiceCommunication(150, callback));
-//        serviceCommunicator.sendMessageToService(new BackgroundThreadServiceCommunication(150, callback));
     }
 
     private ExampleServiceCommunication.Callback callback = new ExampleServiceCommunication.Callback() {
