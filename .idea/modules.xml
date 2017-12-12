@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ServiceControllerLib.iml" filepath="$PROJECT_DIR$/ServiceControllerLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/servicecontroller/servicecontroller.iml" filepath="$PROJECT_DIR$/servicecontroller/servicecontroller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servicecontroller-bus/servicecontroller-bus.iml" filepath="$PROJECT_DIR$/servicecontroller-bus/servicecontroller-bus.iml" />
     </modules>
   </component>
 </project>

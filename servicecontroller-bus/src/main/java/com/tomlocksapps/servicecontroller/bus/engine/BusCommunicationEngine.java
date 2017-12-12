@@ -1,6 +1,7 @@
-package com.tomlocksapps.servicecontroller.example.engine;
+package com.tomlocksapps.servicecontroller.bus.engine;
 
 import com.squareup.otto.Bus;
+import com.tomlocksapps.servicecontroller.example.engine.CommunicationEngine;
 import com.tomlocksapps.servicecontroller.example.engine.communication.ServiceCommunicator;
 import com.tomlocksapps.servicecontroller.example.engine.event.ServiceEventWrapper;
 

@@ -4,7 +4,8 @@ import android.app.Application;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
-import com.tomlocksapps.servicecontroller.example.engine.BusCommunicationEngine;
+import com.tomlocksapps.servicecontroller.bus.engine.BusCommunicationEngine;
+
 
 /**
  * Created by walczewski on 09.12.2017.

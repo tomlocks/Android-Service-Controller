@@ -1,4 +1,4 @@
-package com.tomlocksapps.servicecontroller.example.engine;
+package com.tomlocksapps.servicecontroller.bus.engine;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
