@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debugconfig {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('/../debug.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.tomlocksapps.servicecontroller.example"
@@ -9,12 +17,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debugconfig
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 
