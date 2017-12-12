@@ -1,6 +1,7 @@
 package com.tomlocksapps.servicecontroller;
 
 import android.os.Handler;
+import android.util.Log;
 
 import com.tomlocksapps.servicecontroller.example.engine.CommunicationEngine;
 import com.tomlocksapps.servicecontroller.example.engine.communication.ServiceCommunicationEvent;
@@ -21,6 +22,8 @@ import java.util.Set;
  * Created by walczewski on 05.09.2016.
  */
 public abstract class ServiceController implements ServiceControllerEventCallback {
+
+    private final boolean debug = true;
 
     private final Handler handler = new Handler();
     private final ServiceEventWrapper serviceEventWrapper;
@@ -43,15 +46,13 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
     protected void fillShortTimeServiceSet(Set<Class<? extends IServiceManager>> allowedShortTime) {
     }
 
-    ;
-
     protected void fillOnAppStartActionsMap(Map<Class<? extends IServiceManager>, IServiceCommunication> onAppStartActionsMap) {
     }
 
     public void onCreate() {
+        log("onCreate");
+
         serviceEventWrapper.initialize();
-
-
 
         for (IServiceManager service : services) {
             onCreateService(service);
@@ -66,12 +67,16 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
     }
 
     private void onStart(final IServiceCommunication serviceCommunication, final long delay) {
+        log("onStart - " + serviceCommunication.getClass() + " - delay: " + delay);
+
         for (IServiceManager service : services) {
             service.onStart(serviceCommunication, delay);
         }
     }
 
     public void onDestroy() {
+        log("onDestroy");
+
         serviceEventWrapper.uninitialize();
 
         handler.removeCallbacksAndMessages(null);
@@ -82,12 +87,16 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
     }
 
     public void onRestart() {
+        log("onRestart");
+
         for (IServiceManager service : services) {
             service.onRestart();
         }
     }
 
     public void onLowMemory() {
+        log("onLowMemory");
+
         for (IServiceManager service : services) {
             service.onLowMemory();
         }
@@ -98,6 +107,8 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
         handler.post(new Runnable() {
             @Override
             public void run() {
+                log("onNewServiceCommunicationEvent - " + serviceCommunicationEvent.getClass());
+
                 IServiceCommunication serviceCommunication = serviceCommunicationEvent.getServiceCommunication();
                 if (serviceCommunication != null) {
                     onStart(serviceCommunication, serviceCommunicationEvent.getDelay());
@@ -112,6 +123,8 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
         handler.post(new Runnable() {
             @Override
             public void run() {
+                log("onNewServiceLifecycleEvent - " + serviceLifecycleEvent.getClazz() + " - start: " + serviceLifecycleEvent.getStartFlag());
+
                 if (serviceLifecycleEvent.getStartFlag()) { /* ---- START SERVICE ---- */
                     if (!allowedShortTimeServices.contains(serviceLifecycleEvent.getClazz()))
                         return;
@@ -224,5 +237,9 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
         }
     };
 
+    private void log(String message) {
+        if(debug)
+            Log.d("ServiceController" ,message);
+    }
 
 }
