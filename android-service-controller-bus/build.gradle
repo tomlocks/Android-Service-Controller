@@ -14,7 +14,7 @@ apply plugin: 'com.android.library'
     siteUrl = 'https://github.com/tomlocks/Android-Service-Controller'
     gitUrl = 'https://github.com/tomlocks/Android-Service-Controller.git'
 
-    libraryVersion = '0.0.7'
+    libraryVersion = '0.1.1'
 
     developerId = 'tomlocksapps'
     developerName = 'Tomasz Walczewski'
@@ -34,7 +34,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
-        versionName "0.0.7"
+        versionName "0.1.1"
     }
 
     buildTypes {
@@ -51,8 +51,6 @@ dependencies {
     api project(':android-service-controller')
 }
 
-/*
 // Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
-*/
+/*apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'*/
