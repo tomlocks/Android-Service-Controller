@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+
+
+/*ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'android-service-controller-bus'
+
+    publishedGroupId = 'com.tomlocksapps'
+    libraryName = 'android-service-controller-bus'
+    artifact = 'android-service-controller-bus'
+
+    libraryDescription = 'A library that simplifies creation of app with multiple services working at the same time.'
+
+    siteUrl = 'https://github.com/tomlocks/Android-Service-Controller'
+    gitUrl = 'https://github.com/tomlocks/Android-Service-Controller.git'
+
+    libraryVersion = '0.0.7'
+
+    developerId = 'tomlocksapps'
+    developerName = 'Tomasz Walczewski'
+    developerEmail = 'tomlocksapps@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}*/
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "0.0.7"
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':android-service-controller')
+}
+
+/*
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+*/

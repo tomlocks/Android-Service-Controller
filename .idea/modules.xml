@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ServiceControllerLib.iml" filepath="$PROJECT_DIR$/ServiceControllerLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Android-Service-Controller.iml" filepath="$PROJECT_DIR$/Android-Service-Controller.iml" />
+      <module fileurl="file://C:\dev_test\Android-Service-Controller\ServiceControllerLib.iml" filepath="C:\dev_test\Android-Service-Controller\ServiceControllerLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-service-controller/servicecontroller.iml" filepath="$PROJECT_DIR$/android-service-controller/servicecontroller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-service-controller-bus/servicecontroller-bus.iml" filepath="$PROJECT_DIR$/android-service-controller-bus/servicecontroller-bus.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/servicecontroller/servicecontroller.iml" filepath="$PROJECT_DIR$/servicecontroller/servicecontroller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/servicecontroller-bus/servicecontroller-bus.iml" filepath="$PROJECT_DIR$/servicecontroller-bus/servicecontroller-bus.iml" />
     </modules>
   </component>
 </project>

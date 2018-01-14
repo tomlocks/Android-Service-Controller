@@ -1,1 +1,1 @@
-include ':app', ':servicecontroller', ':servicecontroller-bus'
+include ':app', ':android-service-controller', ':android-service-controller-bus'

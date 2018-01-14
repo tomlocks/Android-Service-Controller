@@ -8,9 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/android-service-controller" />
+            <option value="$PROJECT_DIR$/android-service-controller-bus" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/servicecontroller" />
-            <option value="$PROJECT_DIR$/servicecontroller-bus" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
