@@ -39,14 +39,18 @@ CommunicationEngine
 Every ServiceController(with IServiceCommunication) needs a class that is used for easier communication with other classes. In my project I use a CommunicationEngine based on Otto Bus. If you prefer some other library like RxJava, feel free to use it. 
 
 # Download 
-You can download library through Gradle:
+You can download library with BusCommunicationEngine through Gradle:
 ```Java
 dependencies {
-  compile 'com.tomlocksapps:android-service-controller:0.1.2'
-  compile 'com.tomlocksapps:android-service-controller-bus:0.1.2'
+  compile 'com.tomlocksapps:android-service-controller-bus:0.1.3'
 }
 ```
-If you want to implement CommunicationEngine on your own, just skip the "android-service-controller-bus" dependency.
+Or if you want to implement CommunicationEngine on your own use dependency:
+```Java
+dependencies {
+  compile 'com.tomlocksapps:android-service-controller:0.1.3'
+}
+```
 
 # License
     Licensed under the Apache License, Version 2.0 (the "License");
