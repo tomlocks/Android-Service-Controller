@@ -28,14 +28,6 @@ public class ExampleServiceController extends ServiceController {
     }
 
     @Override
-    protected void fillShortTimeServiceSet(Set<Class<? extends IServiceManager>> allowedShortTime) {
-        super.fillShortTimeServiceSet(allowedShortTime);
-
-        allowedShortTime.add(MainThreadExampleServiceManager.class);
-        allowedShortTime.add(BackgroundThreadExampleServiceManager.class);
-    }
-
-    @Override
     protected void fillOnAppStartActionsMap(Map<Class<? extends IServiceManager>, IServiceCommunication> onAppStartActionsMap) {
         super.fillOnAppStartActionsMap(onAppStartActionsMap);
 

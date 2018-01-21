@@ -23,7 +23,7 @@ import java.util.Set;
  */
 public abstract class ServiceController implements ServiceControllerEventCallback {
 
-    private final boolean debug = true;
+    private boolean debug = false;
 
     private final Handler handler = new Handler();
     private final ServiceEventWrapper serviceEventWrapper;
@@ -31,19 +31,12 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
     private final Set<IServiceManager> services = new LinkedHashSet<>();
 
     private final Map<Class<? extends IServiceManager>, IServiceCommunication> onAppStartActionsMap = new HashMap<>();
-    private final Set<Class<? extends IServiceManager>> allowedShortTimeServices = new HashSet<>(); // zawiera serwisy jednorazowe(stopSelf), które mogą wystartować dla tej implementacji ServiceController'a
 
     public ServiceController(CommunicationEngine engine) {
         this.serviceEventWrapper = engine.getServiceEventWrapper();
         serviceEventWrapper.setCallback(this);
 
         fillOnAppStartActionsMap(onAppStartActionsMap);
-        fillShortTimeServiceSet(allowedShortTimeServices);
-
-        allowedShortTimeServices.addAll(onAppStartActionsMap.keySet()); // dodanie wszystkich serisow jednorazowych
-    }
-
-    protected void fillShortTimeServiceSet(Set<Class<? extends IServiceManager>> allowedShortTime) {
     }
 
     protected void fillOnAppStartActionsMap(Map<Class<? extends IServiceManager>, IServiceCommunication> onAppStartActionsMap) {
@@ -126,9 +119,6 @@ public abstract class ServiceController implements ServiceControllerEventCallbac
                 log("onNewServiceLifecycleEvent - " + serviceLifecycleEvent.getClazz() + " - start: " + serviceLifecycleEvent.getStartFlag());
 
                 if (serviceLifecycleEvent.getStartFlag()) { /* ---- START SERVICE ---- */
-                    if (!allowedShortTimeServices.contains(serviceLifecycleEvent.getClazz()))
-                        return;
-
                     boolean serviceNotYetCreated = true;
                     for (IServiceManager service : services) {
                         if (service.getClass().equals(serviceLifecycleEvent.getClazz())) {
